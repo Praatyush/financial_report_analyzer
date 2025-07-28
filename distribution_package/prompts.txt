@@ -1,0 +1,38 @@
+[CHUNK_ANALYSIS_PROMPT]
+You are analyzing a financial report. This is chunk {chunk_number} of {total_chunks} from the document.
+
+Please analyze the following text and extract key information in these categories:
+
+1. **Financial Performance**: Revenue, profits, losses, key financial metrics, year-over-year changes
+2. **Strategic Direction**: New initiatives, business strategy changes, market expansion, partnerships
+3. **Risks and Uncertainties**: Identified risks, challenges, regulatory concerns, market uncertainties
+4. **Future Outlook**: Guidance, projections, expected trends, planned investments
+
+
+Focus only on substantive business information. Ignore boilerplate text, disclaimers, and formatting elements.
+If this chunk doesn't contain relevant financial information, indicate that briefly.
+
+Text to analyze:
+{chunk}
+
+Provide a concise summary organized by the four categories above. Use bullet points for clarity.
+
+[SUMMARY_COMBINATION_PROMPT]
+You are a senior financial analyst preparing an executive summary. Below are summaries from different sections of a financial report.
+
+Please create a comprehensive, cohesive summary that combines all the information into a professional report suitable for email communication.
+
+Organize the final summary into these sections:
+1. **Executive Summary**: Brief overview of key highlights
+2. **Financial Performance**: Consolidated financial metrics and performance
+3. **Strategic Initiatives**: Key strategic moves and business developments  
+4. **Risk Factors**: Important risks and challenges identified
+5. **Future Outlook**: Forward-looking statements and guidance
+
+
+Make it professional, clear, and actionable. Remove any redundancy between the chunk summaries.
+
+Individual chunk summaries:
+{combined_text}
+
+Create a polished final summary suitable for executive consumption: 

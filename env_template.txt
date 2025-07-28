@@ -1,4 +1,0 @@
-# OpenAI API Configuration
-# Rename this file to .env and add your actual API key below
-
-OPENAI_API_KEY=sk-your-openai-api-key-here 

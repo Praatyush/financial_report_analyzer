@@ -1,0 +1,47 @@
+🎯 FINANCIAL REPORT ANALYZER - USER INSTRUCTIONS
+==================================================
+
+📋 SETUP (Do this once):
+
+1. ✅ CREATE YOUR API KEY FILE:
+   • Rename "env_template.txt" to ".env"
+   • Open ".env" with any text editor (Notepad, TextEdit, etc.)
+   • Replace "sk-your-openai-api-key-here" with your actual OpenAI API key
+   • Save the file
+
+2. ✅ ADD YOUR URLs:
+   • Open "urls.txt" with any text editor
+   • Delete the example lines that start with #
+   • Add your PDF URLs, one per line
+   • Save the file
+
+3. ✅ CUSTOMIZE PROMPTS (Optional):
+   • Open "prompts.txt" to modify analysis instructions
+   • Save the file
+
+🚀 RUNNING THE ANALYSIS:
+
+• OPTION 1 (Mac): Double-click "financial_report_analyzer.app"
+• OPTION 2 (All): Double-click "financial_report_analyzer" 
+
+⏳ WHAT HAPPENS:
+• The analysis runs silently in the background (2-5 minutes per report)
+• You'll see a popup when complete
+• Results are saved in "individual_analysis/" folder
+
+📁 RESULTS:
+• Each PDF gets its own analysis file
+• Files are named after the company (e.g., "novartis_analysis.txt")
+• Ready to copy/paste into emails
+
+❌ TROUBLESHOOTING:
+• If you see "Missing API Key" popup: Check your .env file
+• If you see "No URLs found" popup: Check your urls.txt file
+• If analysis fails: Check that your URLs are valid PDF links
+
+📧 SUPPORT:
+• Contact your IT administrator if you need help
+• Keep this folder intact - don't move or rename files
+
+==================================================
+✅ YOU'RE READY! Just double-click the app to start. 
