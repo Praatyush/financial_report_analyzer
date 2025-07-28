@@ -1,0 +1,6 @@
+# Add one URL per line for analysis
+# Example URLs (replace with actual financial report URLs):
+# https://www.novartis.com/sites/novartis_com/files/q2-2025-media-release-en.pdf
+# https://www.gsk.com/media/fcgpta0r/q2-2025-pre-announcement-aide-memoire.pdf
+
+# Remove the # symbols above and add your actual PDF URLs below:
