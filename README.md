@@ -28,57 +28,64 @@ cd financial-report-analyzer
 
 2. Install required packages:
 ```bash
-pip install pdfplumber openai requests
+pip install -r requirements.txt
 ```
 
 3. Set up your OpenAI API key:
 ```bash
-export OPENAI_API_KEY="your-api-key-here"
+# Copy the template and add your API key
+cp env_template.txt .env
+# Edit .env file and replace with your actual API key
 ```
 
 ## 📖 Usage
 
-### Basic Usage
+### For End Users (Executable)
 
-1. Add PDF URLs to `urls.txt` (one URL per line):
+1. **Set up your API key**: Edit the `.env` file:
+```
+OPENAI_API_KEY=sk-your-actual-openai-api-key-here
+```
+
+2. **Add PDF URLs**: Edit `urls.txt` (one URL per line):
 ```
 https://www.novartis.com/sites/novartis_com/files/q2-2025-media-release-en.pdf
 https://www.gsk.com/media/fcgpta0r/q2-2025-pre-announcement-aide-memoire.pdf
 ```
 
-2. Run the analyzer:
+3. **Customize prompts** (optional): Edit `prompts.txt` to modify analysis prompts
+
+4. **Run the analysis**: 
+   - **Windows**: Double-click `financial_report_analyzer.exe`
+   - **Mac/Linux**: Double-click the executable or run `python3 financial_report_analyzer.py`
+
+5. **View results**: Check the `individual_analysis/` folder for your reports:
+   - `novartis_analysis.txt`
+   - `gsk_analysis.txt`
+   - etc.
+
+### For Developers
+
 ```bash
-python3 financial_report_analyzer.py --api-key "your-api-key"
+# Run directly with Python
+python3 financial_report_analyzer.py
 ```
 
-3. Find individual analyses in the `individual_analysis/` folder:
-- `novartis_analysis.txt`
-- `gsk_analysis.txt`
-- etc.
-
-### Command Line Options
-
-```bash
-python3 financial_report_analyzer.py [OPTIONS]
-
-Options:
-  --api-key TEXT          OpenAI API key (or set OPENAI_API_KEY env var)
-  --model TEXT           OpenAI model to use (default: gpt-4o-mini)
-  --chunk-size INTEGER   Words per chunk (default: 2500)
-  --output-dir TEXT      Output directory (default: individual_analysis)
-  --prompt-file TEXT     Path to prompts file (default: prompts.txt)
-  --url-file TEXT        Path to URLs file (default: urls.txt)
-  --verbose, -v          Enable verbose logging
-  --help                 Show help message
-```
+**Default Settings:**
+- Model: `gpt-4o-mini`
+- Chunk size: `2500` words
+- Output directory: `individual_analysis/`
 
 ## 📁 File Structure
 
 ```
 financial-report-analyzer/
 ├── financial_report_analyzer.py  # Main script
-├── prompts.txt                   # Analysis prompts
-├── urls.txt                      # PDF URLs to analyze
+├── prompts.txt                   # Analysis prompts (editable)
+├── urls.txt                      # PDF URLs to analyze (editable)
+├── .env                          # OpenAI API key (editable)
+├── env_template.txt              # Template for .env file
+├── requirements.txt              # Python dependencies
 ├── individual_analysis/          # Output folder (auto-created)
 │   ├── novartis_analysis.txt
 │   ├── gsk_analysis.txt
@@ -134,14 +141,40 @@ For each URL:
 5. Combine chunk analyses into final report
 6. Save as individual company file
 
-## 🚀 PyInstaller Ready
+## 🚀 Building Executable with PyInstaller
 
-This script is designed to be packaged as an executable:
+### For Developers: Creating the Executable
 
+1. **Install PyInstaller**:
 ```bash
 pip install pyinstaller
+```
+
+2. **Build the executable**:
+```bash
+# For GUI version (no console window)
+pyinstaller --onefile --noconsole financial_report_analyzer.py
+
+# For console version (with debug output)
 pyinstaller --onefile financial_report_analyzer.py
 ```
+
+3. **Distribute to users**:
+   - Copy the executable from `dist/` folder
+   - Include these files alongside the executable:
+     - `urls.txt` (for users to edit)
+     - `prompts.txt` (for users to edit)
+     - `env_template.txt` (for users to create `.env`)
+
+### For Users: First-Time Setup
+
+1. **Create your `.env` file**:
+   - Rename `env_template.txt` to `.env`
+   - Edit `.env` and add your OpenAI API key
+
+2. **Add your URLs** to `urls.txt`
+
+3. **Double-click the executable** to run analysis
 
 ## 🤝 Contributing
 
